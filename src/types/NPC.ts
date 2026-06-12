@@ -1,0 +1,40 @@
+export type AbilityScores = {
+    strenght: number;
+    dexterity: number;
+    constitution: number;
+    intelligence: number;
+    wisdom: number;
+    charisma: number;
+};
+
+export type LightStatBlock = {
+    armorClass: number;
+    hitPoints: number;
+    speed: string;
+    abilityScores: AbilityScores;
+    skills: string[];
+    languages: string[];
+    action: string;
+};
+
+export type NPC = {
+    id: string;
+
+    name: string;
+    gender: 'male' | 'female' | 'non-binary';
+    species: string;
+    profession: string;
+    alignment: string;
+
+    appearance: string;
+    personality: string;
+    goal: string;
+    quirk: string;
+    questHook: string;
+
+    speciesIcon: string;
+    professionIcon: string;
+    portrait?: string;
+
+    statBlock: LightStatBlock;
+};
