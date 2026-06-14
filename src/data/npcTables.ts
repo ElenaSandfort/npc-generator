@@ -2,16 +2,16 @@ export const names = {
     male: [
         'Marek Ashford',
         'Borin Flintkeep',
-    ]
+    ],
     female: [
         'Lyra Thornfield',
         'Serena Willomere',
-    ]
+    ],
     nonBinary: [
         'Ash',
         'Rowan',
         'Sage',
-    ]
+    ],
 };
 
 export const genders = ['male', 'female', 'non-binary'] as const;
