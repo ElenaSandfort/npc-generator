@@ -7,7 +7,7 @@ export const names = {
         'Lyra Thornfield',
         'Serena Willomere',
     ],
-    nonBinary: [
+    'non-binary': [
         'Ash',
         'Rowan',
         'Sage',

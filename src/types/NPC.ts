@@ -1,5 +1,5 @@
 export type AbilityScores = {
-    strenght: number;
+    strength: number;
     dexterity: number;
     constitution: number;
     intelligence: number;
