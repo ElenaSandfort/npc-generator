@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { NPC } from './types/NPC';
 import './App.css';
 import { generateNPC } from './utils/generateNPC';
 
+const STORAGE_KEY = 'npc-generator-saved-npcs';
+
 function App() {
 
   const [currentNPC, setCurrentNPC] = useState<NPC | null>(null);
-  const [savedNPCs, setSavedNPCs] = useState<NPC[]>([]);
+
+  const [savedNPCs, setSavedNPCs] = useState<NPC[]>(() => {
+    const storedNPCs = localStorage.getItem(STORAGE_KEY);
+
+    if (!storedNPCs) return [];
+
+    return JSON.parse(storedNPCs);
+  });
+
   const [selectedNPC, setSelectedNPC] = useState<NPC | null>(null);
+
+  useEffect(() => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(savedNPCs));
+}, [savedNPCs]);
 
   function handleGenerateNPC() {
     setCurrentNPC(generateNPC());
