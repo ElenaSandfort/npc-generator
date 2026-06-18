@@ -1,27 +1,51 @@
 import { useState } from 'react';
+import type { NPC } from './types/NPC';
 import './App.css';
 import { generateNPC } from './utils/generateNPC';
 
 function App() {
 
-  const [currentNPC, setCurrentNPC] = useState(generateNPC());
+  const [currentNPC, setCurrentNPC] = useState<NPC | null>(null);
+  const [savedNPCs, setSavedNPCs] = useState<NPC[]>([]);
 
-  function handleGenerateNewNPC() {
+  function handleGenerateNPC() {
     setCurrentNPC(generateNPC());
   }
+
+  function handleSaveNPC() {
+    if (!currentNPC) return;
+
+    setSavedNPCs([currentNPC, ...savedNPCs]);
+    setCurrentNPC(null);
+  }
+
+  function handleGenerateAnotherNPC() {
+    setCurrentNPC(generateNPC());
+  }
+
   return (
     <>
-      <h1>NPC Generator</h1>
-      <button onClick={handleGenerateNewNPC}>Generate New NPC</button>
-      <h2>{currentNPC.name}</h2>
-      <p>Gender: {currentNPC.gender}</p>
-      <p>Species: {currentNPC.species}</p>
-      <p>Profession: {currentNPC.profession}</p>
-      <p>Alignment: {currentNPC.alignment}</p>
-      <p>Quirk: {currentNPC.quirk}</p>
-      <h3>Strenght: {currentNPC.statBlock.abilityScores.strength}</h3>
-    
-
+    {currentNPC ? (
+      <>
+        <h2>{currentNPC.name}</h2>
+        <button onClick={handleSaveNPC}>Save NPC</button>
+        <button onClick={handleGenerateAnotherNPC}>Generate Another</button>
+      </>
+    ) : (
+      <>
+        <button onClick={handleGenerateNPC}>Generate NPC</button>
+        <h2>Saved NPCs</h2>
+        {savedNPCs.map((npc) => (
+          <article key={npc.id}>
+            <h3>{npc.name}</h3>
+            <p>
+              {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
+              {npc.profession}
+            </p>
+          </article>
+        ))}
+      </>
+    )}
     </>
   )
 }
