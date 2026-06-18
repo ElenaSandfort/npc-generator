@@ -1,4 +1,5 @@
 import type { NPC } from '../types/NPC';
+import NPCSheet from '../components/NPCSheet';
 
 type GeneratedNPCViewProps = {
   npc: NPC;
@@ -13,7 +14,7 @@ function GeneratedNPCView({
 }: GeneratedNPCViewProps) {
   return (
     <>
-      <h2>{npc.name}</h2>
+      <NPCSheet npc={npc} />
       <button onClick={onSaveNPC}>Save NPC</button>
       <button onClick={onGenerateAnotherNPC}>Generate Another</button>
     </>
