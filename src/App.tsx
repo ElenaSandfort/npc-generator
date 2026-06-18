@@ -32,12 +32,21 @@ function App() {
     setSelectedNPC(null);
   }
 
+  function handleDeleteNPC(id: string) {
+    const shouldDelete = window.confirm(
+      'Are you sure you want to delete this NPC?'
+    );
+
+    if (!shouldDelete) return;
+
+    setSavedNPCs(savedNPCs.filter((npc) => npc.id !== id));
+    setSelectedNPC(null);
+  }
+
   return (
     <>
       {selectedNPC ? (
         <>
-          <button onClick={handleCloseNPC}>Back</button>
-
           <h2>{selectedNPC.name}</h2>
           <p>
             {selectedNPC.speciesIcon} {selectedNPC.species} ·{' '}
@@ -52,6 +61,10 @@ function App() {
           <p>Quest Hook: {selectedNPC.questHook}</p>
           <p>HP: {selectedNPC.statBlock.hitPoints}</p>
           <p>AC: {selectedNPC.statBlock.armorClass}</p>
+          <button onClick={handleCloseNPC}>Back</button>
+          <button onClick={() => handleDeleteNPC(selectedNPC.id)}>
+            Delete NPC
+          </button>
         </>
       ) : currentNPC ? (
 
