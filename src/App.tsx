@@ -7,6 +7,7 @@ function App() {
 
   const [currentNPC, setCurrentNPC] = useState<NPC | null>(null);
   const [savedNPCs, setSavedNPCs] = useState<NPC[]>([]);
+  const [selectedNPC, setSelectedNPC] = useState<NPC | null>(null);
 
   function handleGenerateNPC() {
     setCurrentNPC(generateNPC());
@@ -23,29 +24,58 @@ function App() {
     setCurrentNPC(generateNPC());
   }
 
+  function handleOpenNPC(npc: NPC) {
+    setSelectedNPC(npc);
+  }
+
+  function handleCloseNPC() {
+    setSelectedNPC(null);
+  }
+
   return (
     <>
-    {currentNPC ? (
-      <>
-        <h2>{currentNPC.name}</h2>
-        <button onClick={handleSaveNPC}>Save NPC</button>
-        <button onClick={handleGenerateAnotherNPC}>Generate Another</button>
-      </>
-    ) : (
-      <>
-        <button onClick={handleGenerateNPC}>Generate NPC</button>
-        <h2>Saved NPCs</h2>
-        {savedNPCs.map((npc) => (
-          <article key={npc.id}>
-            <h3>{npc.name}</h3>
-            <p>
-              {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
-              {npc.profession}
-            </p>
-          </article>
-        ))}
-      </>
-    )}
+      {selectedNPC ? (
+        <>
+          <button onClick={handleCloseNPC}>Back</button>
+
+          <h2>{selectedNPC.name}</h2>
+          <p>
+            {selectedNPC.speciesIcon} {selectedNPC.species} ·{' '}
+            {selectedNPC.professionIcon} {selectedNPC.profession}
+          </p>
+          <p>Gender: {selectedNPC.gender}</p>
+          <p>Alignment: {selectedNPC.alignment}</p>
+          <p>Appearance: {selectedNPC.appearance}</p>
+          <p>Personality: {selectedNPC.personality}</p>
+          <p>Goal: {selectedNPC.goal}</p>
+          <p>Quirk: {selectedNPC.quirk}</p>
+          <p>Quest Hook: {selectedNPC.questHook}</p>
+          <p>HP: {selectedNPC.statBlock.hitPoints}</p>
+          <p>AC: {selectedNPC.statBlock.armorClass}</p>
+        </>
+      ) : currentNPC ? (
+
+        <>
+          <h2>{currentNPC.name}</h2>
+          <button onClick={handleSaveNPC}>Save NPC</button>
+          <button onClick={handleGenerateAnotherNPC}>Generate Another</button>
+        </>
+      ) : (
+        <>
+          <button onClick={handleGenerateNPC}>Generate NPC</button>
+          <h2>Saved NPCs</h2>
+          {savedNPCs.map((npc) => (
+            <article key={npc.id}>
+              <h3>{npc.name}</h3>
+              <p>
+                {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
+                {npc.profession}
+              </p>
+              <button onClick={() => handleOpenNPC(npc)}>Details</button>
+            </article>
+          ))}
+        </>
+      )}
     </>
   )
 }
