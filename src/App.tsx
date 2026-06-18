@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import type { NPC } from './types/NPC';
 import './App.css';
 import { generateNPC } from './utils/generateNPC';
+import HomeView from './views/HomeView';
+import GeneratedNPCView from './views/GeneratedNPCView';
+import NPCDetailView from './views/NPCDetailView';
 
 const STORAGE_KEY = 'npc-generator-saved-npcs';
 
@@ -60,48 +63,23 @@ function App() {
   return (
     <>
       {selectedNPC ? (
-        <>
-          <h2>{selectedNPC.name}</h2>
-          <p>
-            {selectedNPC.speciesIcon} {selectedNPC.species} ·{' '}
-            {selectedNPC.professionIcon} {selectedNPC.profession}
-          </p>
-          <p>Gender: {selectedNPC.gender}</p>
-          <p>Alignment: {selectedNPC.alignment}</p>
-          <p>Appearance: {selectedNPC.appearance}</p>
-          <p>Personality: {selectedNPC.personality}</p>
-          <p>Goal: {selectedNPC.goal}</p>
-          <p>Quirk: {selectedNPC.quirk}</p>
-          <p>Quest Hook: {selectedNPC.questHook}</p>
-          <p>HP: {selectedNPC.statBlock.hitPoints}</p>
-          <p>AC: {selectedNPC.statBlock.armorClass}</p>
-          <button onClick={handleCloseNPC}>Back</button>
-          <button onClick={() => handleDeleteNPC(selectedNPC.id)}>
-            Delete NPC
-          </button>
-        </>
+        <NPCDetailView
+          npc={selectedNPC}
+          onCloseNPC={handleCloseNPC}
+          onDeleteNPC={handleDeleteNPC}
+        />
       ) : currentNPC ? (
-
-        <>
-          <h2>{currentNPC.name}</h2>
-          <button onClick={handleSaveNPC}>Save NPC</button>
-          <button onClick={handleGenerateAnotherNPC}>Generate Another</button>
-        </>
+        <GeneratedNPCView
+          npc={currentNPC}
+          onSaveNPC={handleSaveNPC}
+          onGenerateAnotherNPC={handleGenerateAnotherNPC}
+        />
       ) : (
-        <>
-          <button onClick={handleGenerateNPC}>Generate NPC</button>
-          <h2>Saved NPCs</h2>
-          {savedNPCs.map((npc) => (
-            <article key={npc.id}>
-              <h3>{npc.name}</h3>
-              <p>
-                {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
-                {npc.profession}
-              </p>
-              <button onClick={() => handleOpenNPC(npc)}>Details</button>
-            </article>
-          ))}
-        </>
+        <HomeView
+          savedNPCs={savedNPCs}
+          onGenerateNPC={handleGenerateNPC}
+          onOpenNPC={handleOpenNPC}
+        />
       )}
     </>
   )
