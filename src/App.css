@@ -1,1 +1,86 @@
+.app {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
+.home {
+  display: grid;
+  gap: 3rem;
+}
+
+.home-header,
+.generate-section,
+.saved-section {
+  text-align: center;
+}
+
+.saved-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.npc-card {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.npc-card__portrait {
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+}
+
+.npc-sheet {
+  display: grid;
+  gap: 2rem;
+}
+
+.npc-sheet__header {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.npc-sheet__portrait {
+  aspect-ratio: 3 / 4;
+  display: grid;
+  place-items: center;
+}
+
+.narrative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.combat-overview-grid,
+.ability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ability-grid {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media (max-width: 760px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .npc-sheet__header,
+  .narrative-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ability-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
