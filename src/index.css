@@ -1,3 +1,48 @@
-#root {
-  text-align: center;
+:root {
+  --color-bg: #f7f1e8;
+  --color-surface: #fbf8f2;
+  --color-primary: #6f3cc3;
+  --color-primary-dark: #4f278f;
+  --color-accent: #c9a44c;
+  --color-text: #3e3125;
+  --color-muted: #7a6d61;
+  --color-border: #d8c7a8;
+
+  --shadow-soft: 0 12px 30px rgba(62, 49, 37, 0.08);
+
+  --font-body: Inter, system-ui, sans-serif;
+  --font-heading: Cinzel, serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+p {
+  margin-top: 0;
 }
