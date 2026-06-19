@@ -6,38 +6,58 @@ type NPCSheetProps = {
 
 function NPCSheet({ npc }: NPCSheetProps) {
   return (
-    <article>
-      <header>
-        <h2>{npc.name}</h2>
-        <p>
-          {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
-          {npc.profession}
-        </p>
+    <article className="npc-sheet">
+      <header className="npc-sheet__header">
+        <div className="npc-sheet__portrait">{npc.speciesIcon}</div>
+
+        <div className="npc-sheet__identity">
+          <h2>{npc.name}</h2>
+          <p>
+            {npc.gender} · {npc.species} · {npc.profession}
+          </p>
+          <p>{npc.alignment}</p>
+        </div>
       </header>
 
-      <section>
-        <h3>Identity</h3>
-        <p>Gender: {npc.gender}</p>
-        <p>Alignment: {npc.alignment}</p>
+      <section className="npc-panel npc-panel--narrative">
+        <h3>Narrative Profile</h3>
+
+        <div className="narrative-grid">
+          <div>
+            <h4>Appearance</h4>
+            <p>{npc.appearance}</p>
+
+            <h4>Personality</h4>
+            <p>{npc.personality}</p>
+          </div>
+
+          <div>
+            <h4>Goal</h4>
+            <p>{npc.goal}</p>
+
+            <h4>Quirk</h4>
+            <p>{npc.quirk}</p>
+
+            <h4>Quest Hook</h4>
+            <p>{npc.questHook}</p>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <h3>Roleplay</h3>
-        <p>Appearance: {npc.appearance}</p>
-        <p>Personality: {npc.personality}</p>
-        <p>Goal: {npc.goal}</p>
-        <p>Quirk: {npc.quirk}</p>
-        <p>Quest Hook: {npc.questHook}</p>
+      <section className="npc-panel npc-panel--combat-overview">
+        <h3>Combat Overview</h3>
+
+        <div className="combat-overview-grid">
+          <p>AC: {npc.statBlock.armorClass}</p>
+          <p>HP: {npc.statBlock.hitPoints}</p>
+          <p>Speed: {npc.statBlock.speed}</p>
+        </div>
       </section>
 
-      <section>
-        <h3>Stats</h3>
-        <p>AC: {npc.statBlock.armorClass}</p>
-        <p>HP: {npc.statBlock.hitPoints}</p>
-        <p>Speed: {npc.statBlock.speed}</p>
+      <section className="npc-panel npc-panel--abilities">
+        <h3>Ability Scores</h3>
 
-        <h4>Ability Scores</h4>
-        <ul>
+        <ul className="ability-grid">
           <li>STR: {npc.statBlock.abilityScores.strength}</li>
           <li>DEX: {npc.statBlock.abilityScores.dexterity}</li>
           <li>CON: {npc.statBlock.abilityScores.constitution}</li>
@@ -45,10 +65,18 @@ function NPCSheet({ npc }: NPCSheetProps) {
           <li>WIS: {npc.statBlock.abilityScores.wisdom}</li>
           <li>CHA: {npc.statBlock.abilityScores.charisma}</li>
         </ul>
+      </section>
+
+      <section className="npc-panel npc-panel--stats">
+        <h3>Character Statistics</h3>
 
         <p>Skills: {npc.statBlock.skills.join(', ')}</p>
         <p>Languages: {npc.statBlock.languages.join(', ')}</p>
-        <p>Action: {npc.statBlock.action}</p>
+      </section>
+
+      <section className="npc-panel npc-panel--actions">
+        <h3>Actions</h3>
+        <p>{npc.statBlock.action}</p>
       </section>
     </article>
   );
