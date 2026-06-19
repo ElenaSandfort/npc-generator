@@ -1,4 +1,5 @@
 import type { NPC } from '../types/NPC';
+import NPCCard from '../components/NPCCard';
 
 type HomeViewProps = {
   savedNPCs: NPC[];
@@ -8,22 +9,40 @@ type HomeViewProps = {
 
 function HomeView({ savedNPCs, onGenerateNPC, onOpenNPC }: HomeViewProps) {
   return (
-    <>
-      <button onClick={onGenerateNPC}>Generate NPC</button>
+    <div className="home">
+      <header className="home-header">
+        <h1>NPC Generator</h1>
+        <p>
+          Generate memorable NPCs for your next D&D session.
+        </p>
+      </header>
 
-      <h2>Saved NPCs</h2>
+      <section className="generate-section">
+        <div className="generate-d20">
+          D20
+        </div>
 
-      {savedNPCs.map((npc) => (
-        <article key={npc.id}>
-          <h3>{npc.name}</h3>
+        <button onClick={onGenerateNPC}>
+          Generate NPC
+        </button>
+      </section>
+
+      <section className="saved-section">
+        <h2>Saved NPCs</h2>
+
+        {savedNPCs.length === 0 ? (
           <p>
-            {npc.speciesIcon} {npc.species} · {npc.professionIcon}{' '}
-            {npc.profession}
+            No saved NPCs yet.
           </p>
-          <button onClick={() => onOpenNPC(npc)}>Details</button>
-        </article>
-      ))}
-    </>
+        ) : (
+          <div className="saved-grid">
+            {savedNPCs.map((npc) => (
+            <NPCCard key={npc.id} npc={npc} onOpenNPC={onOpenNPC} />
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
   );
 }
 

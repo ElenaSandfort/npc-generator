@@ -61,7 +61,7 @@ function App() {
   }
 
   return (
-    <>
+    <main className="app">
       {selectedNPC ? (
         <NPCDetailView
           npc={selectedNPC}
@@ -81,7 +81,7 @@ function App() {
           onOpenNPC={handleOpenNPC}
         />
       )}
-    </>
+    </main>
   )
 }
 
