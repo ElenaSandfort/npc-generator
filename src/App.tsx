@@ -41,6 +41,10 @@ function App() {
     setCurrentNPC(generateNPC());
   }
 
+  function handleCloseGeneratedNPC() {
+    setCurrentNPC(null);
+  }
+
   function handleOpenNPC(npc: NPC) {
     setSelectedNPC(npc);
   }
@@ -73,6 +77,7 @@ function App() {
           npc={currentNPC}
           onSaveNPC={handleSaveNPC}
           onGenerateAnotherNPC={handleGenerateAnotherNPC}
+          onCloseGeneratedNPC={handleCloseGeneratedNPC}
         />
       ) : (
         <HomeView
