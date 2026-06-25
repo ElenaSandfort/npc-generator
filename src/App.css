@@ -13,17 +13,50 @@
   text-align: center;
   display: grid;
   gap: var(--space-2);
+  h1 {
+    font-size: 3rem;
+    color: var(--color-primary);
+  }
+  p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--color-muted);
+  }
 }
 
 .generate-section {
   display: grid;
   justify-items: center;
   gap: var(--space-3);
+  min-height: 300px;
+  align-content: center;
+}
+
+.generate-d20 {
+  width: 140px;
+  height: 140px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(111, 60, 195, 0.08);
+  border: 2px solid var(--color-accent);
+
+  color: var(--color-primary);
+
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .saved-section {
   display: grid;
   gap: var(--space-4);
+  text-align: center;
+  h2 {
+    color: var(--color-primary);
+  }
 }
 
 .saved-grid {
