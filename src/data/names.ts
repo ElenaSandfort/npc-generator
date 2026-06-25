@@ -1,5 +1,17 @@
 export const names = {
-  male: ['Marek Ashford', 'Borin Flintkeep'],
-  female: ['Lyra Thornfield', 'Elara Voss'],
-  'non-binary': ['Ash Vale', 'Rowan Mire'],
+  human: {
+    male: ['Marek Ashford'],
+    female: ['Lyra Thornfield'],
+    'non-binary': ['Ash Vale'],
+  },
+  elf: {
+    male: ['Theren Moonbrook'],
+    female: ['Elara Voss'],
+    'non-binary': ['Rowan Starfall'],
+  },
+  dwarf: {
+    male: ['Borin Flintkeep'],
+    female: ['Dagna Stonebrew'],
+    'non-binary': ['Korrin Emberdelve'],
+  },
 };

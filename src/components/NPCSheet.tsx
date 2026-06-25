@@ -8,7 +8,7 @@ function NPCSheet({ npc }: NPCSheetProps) {
   return (
     <article className="npc-sheet">
       <header className="npc-sheet__header">
-        <div className="npc-sheet__portrait">{npc.speciesIcon}</div>
+        <div className="npc-sheet__portrait">Portrait</div>
 
         <div className="npc-sheet__identity">
           <h2>{npc.name}</h2>

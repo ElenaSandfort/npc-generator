@@ -38,7 +38,7 @@ export function generateNPC(): NPC {
   return {
     id: crypto.randomUUID(),
 
-    name: pickRandom(names[gender.value]),
+    name: pickRandom(names[selectedSpecies.id][gender.value]),
     gender,
     species: selectedSpecies.name,
     profession: selectedRole.name,
@@ -50,7 +50,6 @@ export function generateNPC(): NPC {
     quirk: pickRandom(quirks),
     questHook: pickRandom(selectedRole.questHooks),
 
-    speciesIcon: selectedSpecies.icon,
     professionIcon: selectedRole.icon,
     portrait: undefined,
 

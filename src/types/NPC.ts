@@ -38,7 +38,6 @@ export type NPC = {
     quirk: string;
     questHook: string;
 
-    speciesIcon: string;
     professionIcon: string;
     portrait?: string;
 

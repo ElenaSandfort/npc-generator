@@ -10,7 +10,7 @@ function NPCCard({ npc, onOpenNPC }: NPCCardProps) {
     <article className="npc-card">
       <div className="npc-card__portrait">
         <div className="npc-card__portrait-placeholder">
-          {npc.speciesIcon}
+          Portrait
         </div>
 
         <div className="npc-card__badge" aria-label={npc.profession}>

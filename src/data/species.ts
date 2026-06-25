@@ -1,5 +1,14 @@
 export const species = [
-  { name: 'Human', icon: '🧍' },
-  { name: 'Elf', icon: '🏹' },
-  { name: 'Dwarf', icon: '⛏️' },
-];
+  {
+    id: 'human',
+    name: 'Human',
+  },
+  {
+    id: 'elf',
+    name: 'Elf',
+  },
+  {
+    id: 'dwarf',
+    name: 'Dwarf',
+  },
+] as const;
