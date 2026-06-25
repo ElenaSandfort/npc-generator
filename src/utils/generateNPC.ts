@@ -14,6 +14,11 @@ function pickRandom<T>(items: readonly T[]): T {
   return items[randomIndex];
 }
 
+function pickRandomMany<T>(items: readonly T[], count: number): T[] {
+  const shuffledItems = [...items].sort(() => Math.random() - 0.5);
+  return shuffledItems.slice(0, count);
+}
+
 function generateAbilityScores(): AbilityScores {
   return {
     strength: pickRandom([8, 10, 12, 14]),
@@ -54,7 +59,7 @@ export function generateNPC(): NPC {
       hitPoints: pickRandom(selectedRole.hitPointOptions),
       speed: selectedRole.speed,
       abilityScores: generateAbilityScores(),
-      skills: [pickRandom(selectedRole.skills), pickRandom(selectedRole.skills)],
+      skills: pickRandomMany(selectedRole.skills, 2),
       languages: selectedRole.languages,
       action: pickRandom(selectedRole.actions),
     },
