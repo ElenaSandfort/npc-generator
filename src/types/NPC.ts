@@ -44,3 +44,21 @@ export type NPC = {
 
     statBlock: LightStatBlock;
 };
+
+export type RoleArchetype = {
+  name: string;
+  icon: string;
+
+  armorClassOptions: number[];
+  hitPointOptions: number[];
+  speed: string;
+
+  skills: string[];
+  languages: string[];
+  actions: string[];
+
+  appearances: string[];
+  personalities: string[];
+  goals: string[];
+  questHooks: string[];
+};

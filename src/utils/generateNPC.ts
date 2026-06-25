@@ -1,17 +1,10 @@
 import {
-    actions,
-    alignments,
-    appearances,
-    genders,
-    goals,
-    languages,
-    names,
-    personalities,
-    professions,
-    questHooks,
-    quirks,
-    skills,
-    species,
+  alignments,
+  genders,
+  names,
+  quirks,
+  roleArchetypes,
+  species,
 } from '../data/npcTables';
 
 import type { AbilityScores, NPC} from '../types/NPC';
@@ -35,7 +28,7 @@ function generateAbilityScores(): AbilityScores {
 export function generateNPC(): NPC {
   const gender = pickRandom(genders);
   const selectedSpecies = pickRandom(species);
-  const selectedProfession = pickRandom(professions);
+  const selectedRole = pickRandom(roleArchetypes);
 
   return {
     id: crypto.randomUUID(),
@@ -43,27 +36,27 @@ export function generateNPC(): NPC {
     name: pickRandom(names[gender.value]),
     gender,
     species: selectedSpecies.name,
-    profession: selectedProfession.name,
+    profession: selectedRole.name,
     alignment: pickRandom(alignments),
 
-    appearance: pickRandom(appearances),
-    personality: pickRandom(personalities),
-    goal: pickRandom(goals),
+    appearance: pickRandom(selectedRole.appearances),
+    personality: pickRandom(selectedRole.personalities),
+    goal: pickRandom(selectedRole.goals),
     quirk: pickRandom(quirks),
-    questHook: pickRandom(questHooks),
+    questHook: pickRandom(selectedRole.questHooks),
 
     speciesIcon: selectedSpecies.icon,
-    professionIcon: selectedProfession.icon,
+    professionIcon: selectedRole.icon,
     portrait: undefined,
 
-    statBlock: {
-      armorClass: pickRandom([10, 11, 12, 13, 14]),
-      hitPoints: pickRandom([4, 6, 8, 10, 12, 16]),
-      speed: '30 ft.',
+   statBlock: {
+      armorClass: pickRandom(selectedRole.armorClassOptions),
+      hitPoints: pickRandom(selectedRole.hitPointOptions),
+      speed: selectedRole.speed,
       abilityScores: generateAbilityScores(),
-      skills: [pickRandom(skills), pickRandom(skills)],
-      languages: ['Common', pickRandom(languages)],
-      action: pickRandom(actions),
+      skills: [pickRandom(selectedRole.skills), pickRandom(selectedRole.skills)],
+      languages: selectedRole.languages,
+      action: pickRandom(selectedRole.actions),
     },
   };
 }
