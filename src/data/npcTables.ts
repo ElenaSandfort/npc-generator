@@ -14,7 +14,11 @@ export const names = {
     ],
 };
 
-export const genders = ['male', 'female', 'non-binary'] as const;
+export const genders = [
+  { value: 'male', label: 'Male', icon: '♂' },
+  { value: 'female', label: 'Female', icon: '♀' },
+  { value: 'non-binary', label: 'Non-binary', icon: '⚧' },
+] as const;
 
 export const species = [
   { name: 'Human', icon: '🧍' },

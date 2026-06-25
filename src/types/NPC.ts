@@ -7,6 +7,12 @@ export type AbilityScores = {
     charisma: number;
 };
 
+export type Gender = {
+  value: 'male' | 'female' | 'non-binary';
+  label: string;
+  icon: string;
+};
+
 export type LightStatBlock = {
     armorClass: number;
     hitPoints: number;
@@ -21,7 +27,7 @@ export type NPC = {
     id: string;
 
     name: string;
-    gender: 'male' | 'female' | 'non-binary';
+    gender: Gender;
     species: string;
     profession: string;
     alignment: string;

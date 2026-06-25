@@ -40,7 +40,7 @@ export function generateNPC(): NPC {
   return {
     id: crypto.randomUUID(),
 
-    name: pickRandom(names[gender]),
+    name: pickRandom(names[gender.value]),
     gender,
     species: selectedSpecies.name,
     profession: selectedProfession.name,

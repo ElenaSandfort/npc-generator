@@ -61,10 +61,8 @@
 
 .saved-grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
-  );
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
   gap: var(--space-4);
 }
 
@@ -80,17 +78,49 @@
 
 .npc-card {
   display: grid;
-  gap: var(--space-3);
+  gap: var(--space-2);
+  text-align: start;
 }
 
 .npc-card__portrait {
+  position: relative;
+  overflow: hidden;
+
   border-radius: var(--radius-md);
   background: rgba(111, 60, 195, 0.08);
-  color: var(--color-primary);
-  font-size: 3rem;
   aspect-ratio: 4 / 3;
+}
+
+.npc-card__portrait-placeholder {
+  width: 100%;
+  height: 100%;
+
   display: grid;
   place-items: center;
+
+  color: var(--color-primary);
+  font-size: 3rem;
+}
+
+.npc-card__badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+
+  display: grid;
+  place-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border-radius: 999px;
+  border: 1px solid var(--color-accent);
+
+  background: var(--color-primary);
+  color: white;
+
+  font-size: 1.25rem;
+  box-shadow: var(--shadow-soft);
 }
 
 .npc-card__content {
@@ -218,18 +248,13 @@
 button {
   font: inherit;
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-1);
-
   padding: 0.75rem 1.25rem;
-
   border-radius: var(--radius-sm);
-
   font-weight: 600;
-
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -261,7 +286,6 @@ button {
 .button-danger {
   background: var(--color-danger);
   color: white;
-
   border: 1px solid var(--color-danger);
 }
 
@@ -272,15 +296,40 @@ button {
 
 .button-link {
   padding: 0;
-
   border: none;
   background: transparent;
-
   color: var(--color-primary);
-
   font-weight: 600;
+  justify-content: start;
 }
 
 .button-link:hover {
   text-decoration: underline;
+}
+
+.horizontal-divider {
+  position: relative;
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-1) 0;
+}
+
+.horizontal-divider::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-accent);
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
 }

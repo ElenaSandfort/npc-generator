@@ -13,7 +13,7 @@ function NPCSheet({ npc }: NPCSheetProps) {
         <div className="npc-sheet__identity">
           <h2>{npc.name}</h2>
           <p>
-            {npc.gender} · {npc.species} · {npc.profession}
+            {npc.gender.icon} · {npc.species} · {npc.profession}
           </p>
           <p>{npc.alignment}</p>
         </div>
