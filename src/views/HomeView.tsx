@@ -22,7 +22,7 @@ function HomeView({ savedNPCs, onGenerateNPC, onOpenNPC }: HomeViewProps) {
           D20
         </div>
 
-        <button onClick={onGenerateNPC}>
+        <button onClick={onGenerateNPC} className="button-primary">
           Generate NPC
         </button>
       </section>

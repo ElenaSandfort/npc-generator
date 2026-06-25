@@ -18,7 +18,7 @@ function NPCCard({ npc, onOpenNPC }: NPCCardProps) {
         <p>{npc.goal}</p>
       </div>
 
-      <button onClick={() => onOpenNPC(npc)}>Details</button>
+      <button onClick={() => onOpenNPC(npc)} className="button-outline">Details</button>
     </article>
   );
 }

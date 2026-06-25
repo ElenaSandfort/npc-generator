@@ -14,9 +14,11 @@ function NPCDetailView({ npc, onCloseNPC, onDeleteNPC }: NPCDetailViewProps) {
   return (
     <>
       <NPCSheet npc={npc} />
-      <button onClick={handlePrintNPC}>Print / Save as PDF</button>
-      <button onClick={onCloseNPC}>Back</button>
-      <button onClick={() => onDeleteNPC(npc.id)}>Delete NPC</button>
+      <div className="view-actions">
+        <button onClick={onCloseNPC} className="button-link">← Back</button>
+        <button onClick={handlePrintNPC} className="button-primary">Print / Save as PDF</button>
+        <button onClick={() => onDeleteNPC(npc.id)} className="button-danger">Delete NPC</button>
+      </div>
     </>
   );
 }

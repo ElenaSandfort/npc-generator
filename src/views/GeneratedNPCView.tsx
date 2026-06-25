@@ -15,8 +15,10 @@ function GeneratedNPCView({
   return (
     <>
       <NPCSheet npc={npc} />
-      <button onClick={onSaveNPC}>Save NPC</button>
-      <button onClick={onGenerateAnotherNPC}>Generate Another</button>
+      <div className="view-actions">
+        <button onClick={onSaveNPC} className="button-primary">Save NPC</button>
+        <button onClick={onGenerateAnotherNPC} className="button-outline">Generate Another</button>
+      </div>
     </>
   );
 }
