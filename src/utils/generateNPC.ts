@@ -1,11 +1,12 @@
 import {
   alignments,
   genders,
-  names,
   quirks,
   roleArchetypes,
-  species,
 } from '../data/npcTables';
+
+import { species } from '../data/species';
+import { additionalLanguages } from '../data/languages';
 
 import type { NPC } from '../types/NPC';
 
@@ -19,6 +20,28 @@ function pickRandomMany<T>(items: readonly T[], count: number): T[] {
   return shuffledItems.slice(0, count);
 }
 
+function generateName(
+  selectedSpecies: (typeof species)[number],
+  genderValue: 'male' | 'female' | 'non-binary'
+): string {
+  const firstName =
+    genderValue === 'male'
+      ? pickRandom(selectedSpecies.maleFirstNames)
+      : genderValue === 'female'
+        ? pickRandom(selectedSpecies.femaleFirstNames)
+        : pickRandom(selectedSpecies.nonBinaryFirstNames);
+
+  const lastName = pickRandom(selectedSpecies.lastNames);
+
+  return `${firstName} ${lastName}`;
+}
+
+function generateLanguages(nativeLanguage: string): string[] {
+  const randomAdditionalLanguage = pickRandom(additionalLanguages);
+
+  return [...new Set([nativeLanguage, randomAdditionalLanguage])];
+}
+
 export function generateNPC(): NPC {
   const gender = pickRandom(genders);
   const selectedSpecies = pickRandom(species);
@@ -27,9 +50,9 @@ export function generateNPC(): NPC {
   return {
     id: crypto.randomUUID(),
 
-    name: pickRandom(names[selectedSpecies.id][gender.value]),
+    name: generateName(selectedSpecies, gender.value),
     gender,
-    species: selectedSpecies.name,
+    species: selectedSpecies.displayName,
     profession: selectedRole.name,
     alignment: pickRandom(alignments),
 
@@ -42,13 +65,13 @@ export function generateNPC(): NPC {
     professionIcon: selectedRole.icon,
     portrait: undefined,
 
-   statBlock: {
+    statBlock: {
       armorClass: pickRandom(selectedRole.armorClassOptions),
       hitPoints: pickRandom(selectedRole.hitPointOptions),
       speed: selectedRole.speed,
       abilityScores: pickRandom(selectedRole.abilityScoreSets),
       skills: pickRandomMany(selectedRole.skills, 2),
-      languages: selectedRole.languages,
+      languages: generateLanguages(selectedSpecies.nativeLanguage),
       action: pickRandom(selectedRole.actions),
     },
   };

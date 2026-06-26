@@ -13,6 +13,17 @@ export type Gender = {
   icon: string;
 };
 
+export type Species = {
+  id: string;
+  displayName: string;
+  nativeLanguage: string;
+
+  maleFirstNames: string[];
+  femaleFirstNames: string[];
+  nonBinaryFirstNames: string[];
+  lastNames: string[];
+};
+
 export type LightStatBlock = {
     armorClass: number;
     hitPoints: number;
