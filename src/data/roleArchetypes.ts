@@ -32,6 +32,24 @@ export const roleArchetypes: RoleArchetype[] = [
       'Asks the party to investigate suspicious activity near the city gate.',
       'Needs help finding a missing patrol before the captain notices.',
     ],
+    abilityScoreSets: [
+      {
+        strength: 14,
+        dexterity: 12,
+        constitution: 13,
+        intelligence: 10,
+        wisdom: 11,
+        charisma: 9,
+      },
+      {
+        strength: 12,
+        dexterity: 14,
+        constitution: 12,
+        intelligence: 10,
+        wisdom: 13,
+        charisma: 10,
+      },
+    ],
   },
   {
     name: 'Merchant',
@@ -63,6 +81,24 @@ export const roleArchetypes: RoleArchetype[] = [
     questHooks: [
       'Offers payment to retrieve a stolen ledger from a rival.',
       'Needs discreet escorts for a shipment no one should inspect.',
+    ],
+        abilityScoreSets: [
+      {
+        strength: 14,
+        dexterity: 12,
+        constitution: 13,
+        intelligence: 10,
+        wisdom: 11,
+        charisma: 9,
+      },
+      {
+        strength: 12,
+        dexterity: 14,
+        constitution: 12,
+        intelligence: 10,
+        wisdom: 13,
+        charisma: 10,
+      },
     ],
   },
 ];

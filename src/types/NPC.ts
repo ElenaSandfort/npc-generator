@@ -51,6 +51,8 @@ export type RoleArchetype = {
   armorClassOptions: number[];
   hitPointOptions: number[];
   speed: string;
+  
+  abilityScoreSets: AbilityScores[];
 
   skills: string[];
   languages: string[];
